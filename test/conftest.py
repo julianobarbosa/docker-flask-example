@@ -14,11 +14,7 @@ def app():
     """
     db_uri = settings.SQLALCHEMY_DATABASE_URI
 
-    if "?" in db_uri:
-        db_uri = db_uri.replace("?", "_test?")
-    else:
-        db_uri = f"{db_uri}_test"
-
+    db_uri = db_uri.replace("?", "_test?") if "?" in db_uri else f"{db_uri}_test"
     params = {
         "DEBUG": False,
         "TESTING": True,
